@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Dokununca Çiçek Açsın</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #f0f8ff;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .flower {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: pink;
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
+      animation: bloom 1s ease-out forwards;
+    }
+    @keyframes bloom {
+      from { transform: scale(0); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    document.body.addEventListener("click", function(event) {
+      const flower = document.createElement("div");
+      flower.className = "flower";
+      flower.style.left = (event.clientX - 25) + "px";
+      flower.style.top = (event.clientY - 25) + "px";
+      document.body.appendChild(flower);
+
+      // Çiçek bir süre sonra kaybolsun
+      setTimeout(() => {
+        flower.remove();
+      }, 3000);
+    });
+  </script>
+</body>
+</html>
